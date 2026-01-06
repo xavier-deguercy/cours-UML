@@ -1,0 +1,50 @@
+@startuml
+title Diagramme de classes — Compagnie aérienne
+
+class Vol {
+  numero
+  villeDepart
+  villeArrivee
+  heureDepart
+  heureArrivee
+  distance
+  frequence
+}
+
+class Depart {
+  date
+  quantiteCarburant
+}
+
+class Passager {
+  nom
+  adresse
+  telephone
+}
+
+class Avion {
+  numero
+  type
+  capacite
+}
+
+class Personnel {
+  nom
+  adresse
+  telephone
+}
+
+class PersonnelNavigant
+class PersonnelNonNavigant
+class Pilote
+
+Personnel <|-- PersonnelNavigant
+Personnel <|-- PersonnelNonNavigant
+PersonnelNonNavigant <|-- Pilote
+
+Vol "1" -- "0..*" Depart : est_programmé
+Depart "1" -- "1" Avion : affecte
+Depart "1" -- "0..*" Passager : enregistre
+Depart "1" -- "1..*" Personnel : affecte
+
+@enduml

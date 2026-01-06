@@ -1,0 +1,17 @@
+@startuml
+title Diagramme de classes — Projet informatique
+
+class Projet {
+  dateCommencement
+}
+
+class Etape
+class Phase
+class Tache
+class Livrable
+
+Projet "1" *-- "1..*" Etape : compose
+Etape "1" *-- "1..*" Phase : compose
+Phase "1" *-- "1..*" Tache : compose
+Projet "1" *-- "1..*" Livrable : produit
+@enduml

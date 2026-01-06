@@ -1,0 +1,10 @@
+@startuml
+class Repertoire {
+}
+
+class Chemin {
+nomFichier [0..1]
+}
+
+Chemin "1" -- "1" Repertoire : correspond à >
+@enduml

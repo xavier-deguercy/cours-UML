@@ -1,0 +1,9 @@
+@startuml
+class Chemin
+
+class Fichier
+class Repertoire
+
+Chemin <|-- Fichier
+Chemin <|-- Repertoire
+@enduml
