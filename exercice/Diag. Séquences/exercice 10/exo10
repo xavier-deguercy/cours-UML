@@ -1,0 +1,33 @@
+@startuml
+actor Utilisateur
+participant "Bouton 1" as B1
+participant "Bouton 2" as B2
+participant "Montre (SimpleWatch)" as SW
+participant "Heure (Time)" as T
+participant "Affichage LCD" as LCD
+
+Utilisateur -> B1 : appuyer()
+B1 -> SW : appuyer()
+
+Utilisateur -> B1 : appuyer()
+B1 -> SW : appuyer()
+
+SW -> LCD : faireClignoterHeures()
+SW -> LCD : faireClignoterMinutes()
+
+loop À chaque appui sur le bouton 2
+    Utilisateur -> B2 : appuyer()
+    B2 -> SW : appuyer()
+    SW -> T : incrementerMinutes()
+    SW -> LCD : rafraichirAffichage()
+end
+
+Utilisateur -> B1 : appuyer()
+Utilisateur -> B2 : appuyer()
+
+B1 -> SW : appuyer()
+B2 -> SW : appuyer()
+
+SW -> T : enregistrerNouvelleHeure()
+SW -> LCD : arreterClignotement()
+@enduml

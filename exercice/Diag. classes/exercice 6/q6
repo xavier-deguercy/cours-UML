@@ -1,0 +1,11 @@
+@startuml
+class Fichier
+class Utilisateur
+
+class DroitsAcces {
+typeDroit
+}
+
+Utilisateur "1" -- "1..*" DroitsAcces
+Fichier "1" -- "1..*" DroitsAcces
+@enduml

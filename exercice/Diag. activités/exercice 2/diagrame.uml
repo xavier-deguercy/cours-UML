@@ -1,0 +1,21 @@
+@startuml
+|Client|
+start
+:Passer commande;
+
+|Vente|
+:Traiter la commande;
+:Établir la facture;
+
+|Client|
+:Payer la facture;
+
+|Caisse|
+:Encaisser le paiement;
+
+|Entrepôt|
+:Préparer la commande;
+:Expédier la commande;
+
+stop
+@enduml

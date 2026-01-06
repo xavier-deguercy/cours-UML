@@ -1,0 +1,6 @@
+@startuml
+class Pays
+class Capitale
+
+Pays "1" -- "1" Capitale : possède >
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+title Diagramme d’activité — Créer une fiche de réparation (MonAuto)
+
+start
+
+:Chef d'atelier saisit critères de recherche;
+:Recherche des véhicules;
+
+if (Véhicule trouvé ?) then (Oui)
+  :Sélection du véhicule;
+  :Afficher informations du véhicule;
+
+  if (Véhicule sous garantie ?) then (Oui)
+    :Saisie de la date de demande de réparation;
+  endif
+
+else (Non)
+  :Saisie des informations du nouveau véhicule;
+endif
+
+:Saisie de la date de réception;
+:Saisie de la date de restitution;
+
+if (Dommage payé par assurance ?) then (Oui)
+  :Afficher liste des assurances;
+  :Sélection de l'assurance;
+endif
+
+:Enregistrement de la fiche de réparation;
+
+stop
+@enduml

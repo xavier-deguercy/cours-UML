@@ -1,0 +1,21 @@
+@startuml
+actor Guichetier
+participant "Système Guichet" as SG
+participant "Système Central" as SC
+
+Guichetier -> SG : ouvertureSession()
+Guichetier -> SG : saisirCompte(numeroCompte)
+SG -> SC : validationCompte(numeroCompte)
+SC --> SG : compteValide
+
+SG -> Guichetier : demandeTypeOperation()
+Guichetier -> SG : retraitLiquide(montant)
+
+SG -> SC : verificationSoldeCompte(montant)
+SC --> SG : soldeSuffisant
+
+SG -> SC : debitCompte(montant)
+SC --> SG : confirmationDebit
+
+SG -> Guichetier : autorisationDelivrance()
+@enduml
