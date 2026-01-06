@@ -1,0 +1,13 @@
+@startuml
+abstract class Dessin
+
+class Texte
+class FormeGeometrique
+class Groupe
+
+Dessin <|-- Texte
+Dessin <|-- FormeGeometrique
+Dessin <|-- Groupe
+
+Groupe "1" *-- "1..*" Dessin : regroupe >
+@enduml
