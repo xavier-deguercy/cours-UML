@@ -1,0 +1,23 @@
+@startuml
+actor Utilisateur
+participant Ordinateur
+participant Fichier
+participant ServeurImprimante
+participant QueueImpression
+participant Imprimante
+
+Utilisateur -> Ordinateur : print(fichier)
+Ordinateur -> Fichier : ouvrir()
+Ordinateur -> ServeurImprimante : Print(fichier)
+
+ServeurImprimante -> QueueImpression : Store(fichier)
+QueueImpression --> ServeurImprimante : fichierEnAttente
+
+ServeurImprimante -> Imprimante : Print(fichier)
+Imprimante -> Imprimante : verifierEtat()
+Imprimante --> ServeurImprimante : etatOK
+
+Imprimante -> Imprimante : imprimer()
+ServeurImprimante --> Ordinateur : impressionOK
+Ordinateur --> Utilisateur : notificationImpression
+@enduml

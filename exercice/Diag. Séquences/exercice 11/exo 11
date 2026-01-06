@@ -1,0 +1,23 @@
+@startuml
+actor usager
+participant Ascenseur
+participant porte
+participant voyant
+
+Usager -> Ascenseur : appel()
+
+
+Ascenseur -> Voyant : allumer()
+Ascenseur -> Porte : ouvrir()
+
+Usager -> Ascenseur : choisirEtage(destination)
+
+Ascenseur -> Porte : fermer()
+Ascenseur -> Ascenseur : monter()
+Ascenseur -> Ascenseur : deplacer()
+
+
+Ascenseur -> Porte : ouvrir()
+Ascenseur -> Voyant : eteindre()
+
+@enduml

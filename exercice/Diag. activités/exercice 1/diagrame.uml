@@ -1,0 +1,39 @@
+@startuml
+start
+
+:Ouvrir la cafetière;
+
+:Remplir le réservoir d’eau;
+
+if (Réservoir plein ?) then (oui)
+else (non)
+  :Rajouter de l’eau;
+endif
+
+:Placer un filtre;
+
+:Ajouter le café moulu;
+
+if (Café suffisant ?) then (oui)
+else (non)
+  :Ajouter plus de café;
+endif
+
+:Fermer la cafetière;
+
+:Appuyer sur le bouton marche;
+
+:Chauffer l’eau;
+
+:Faire passer l’eau dans le filtre;
+
+:Le café coule dans la verseuse;
+
+:Attendre la fin de préparation;
+
+:Éteindre la cafetière;
+
+:Servir le café;
+
+stop
+@enduml
