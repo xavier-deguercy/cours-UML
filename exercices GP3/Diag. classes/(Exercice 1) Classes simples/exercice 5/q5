@@ -1,0 +1,6 @@
+@startuml
+class Fichier
+class Enregistrement
+
+Fichier "1" *-- "1..*" Enregistrement : contient >
+@enduml

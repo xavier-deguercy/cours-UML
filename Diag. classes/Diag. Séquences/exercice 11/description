@@ -1,0 +1,14 @@
+L’usager appelle l’ascenseur
+→ Le voyant s’allume pour indiquer que l’ascenseur est actif
+→ La porte s’ouvre
+
+L’usager choisit l’étage de destination
+→ L’ascenseur ferme la porte
+→ Il commence à monter
+→ Il se déplace jusqu’à l’étage demandé
+
+Une fois arrivé :
+→ La porte s’ouvre
+→ Le voyant s’éteint
+
+
