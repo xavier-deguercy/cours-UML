@@ -1,0 +1,54 @@
+class PersonnePhysique {
+    + numeroSecuriteSociale : String
+  
+}
+
+
+class PersonneMorale {
+    + raisonSociale : String
+  
+}
+class Voiture {
+ +numeroPlaque
+  }
+  
+class Banque{
+ }
+ 
+class Emprunt{
+ }
+
+Personne <|-- PersonnePhysique
+note on link
+Spécialisation d'une classe dans une hiérarchie
+end note
+
+
+Personne <|-- PersonneMorale
+note on link
+Spécialisation d'une classe dans une hiérarchie
+end note
+
+
+
+PersonneMorale "0..*" -- "0..3" PersonnePhysique : emploie / estEmployéePar
+note on link
+Contrainte : une PersonnePhysique
+peut avoir au maximum 3 employeurs.
+end note
+
+Personne "0..*" -- "1" Voiture : possède / appartientÀ
+note on link
+Une voiture est la propriété d'une personne 
+(physique ou morale). donc a Personne
+end note
+
+' Un emprunt est dans une banque
+Banque "1" -- "0..*" Emprunt : accorde
+
+' Un emprunt est demandé par une personne (physique ou morale)
+Personne "1" -- "0..*" Emprunt : demande
+
+' Un emprunt peut servir à acheter une voiture
+Emprunt "0..*" -- "0..1" Voiture : financeAchat
+
