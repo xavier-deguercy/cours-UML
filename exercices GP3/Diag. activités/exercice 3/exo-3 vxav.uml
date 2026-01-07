@@ -1,0 +1,76 @@
+@startuml
+
+title Distributeur de billets (DAB) — Diagramme d'activité
+'' je definie mes collonnes 
+|Client|
+|DAB|
+|Banque|
+
+''
+|Client|
+start
+:Introduire la carte;
+|DAB|
+:verification de validitée;
+if (Carte valide ?) then (non)
+  :Afficher "Carte invalide";
+  :Restituer la carte;
+  ''le client recup sa carte car non valide
+  stop 
+  ''
+endif
+''le repeat sert pour le while plus loin
+repeat 
+:Inviter à saisir le code;
+' --- Gestion des tentatives de code (max 3) ---
+
+ |DAB|
+  :Vérifier le code;
+
+  if (Code correct ?) then (oui)
+    break
+  else (non)
+    :nbTentatives++;
+    if (nbTentatives >= 3 ?) then (oui)
+      :Avaler la carte;
+      stop
+    else (non)
+      :Afficher "Code incorrect";
+      :Redemander le code;
+    endif
+  endif
+repeat while (Code incorrect) is (non)
+  
+' --- Saisie du montant + contrôle de solde (boucle si insuffisant) ---
+repeat
+  |DAB|
+  :Demander le montant à retirer;
+
+  |Client|
+  :Saisir le montant;
+
+  |DAB|
+  :Consulter le solde du compte;
+
+  |Banque|
+  :Retourner le solde;
+
+  |DAB|
+  if (Solde suffisant ?) then (oui)
+    break
+  else (non)
+    :Informer "Solde insuffisant";
+    :Demander un montant inférieur;
+  endif
+repeat while (Solde insuffisant) is (oui)
+
+:Restituer la carte;
+:Délivrer les billets;
+:Imprimer le reçu;
+
+stop
+@enduml
+  
+  
+  
+@enduml

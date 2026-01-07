@@ -1,0 +1,61 @@
+@startuml
+ 
+skinparam conditionStyle diamond
+skinparam style strictuml
+title Processus Global de Réparation
+|Chef d'atelier|
+ 
+start
+ 
+:Ouvrir une fiche de réparation;
+|Mécanicien|
+ 
+:Demander des pièces au magasin;
+|Magasinier|
+ 
+if (Fiche de réparation ouverte ?) then (Oui)
+    :Saisir les pièces fournies;
+    :Fournir les pièces;
+else (Non)
+    :Informer le mécanicien (Refus);
+    |Mécanicien|
+    :Demander au chef d'ouvrir le dossier;
+    |Chef d'atelier|
+    :Ouvrir/Régulariser la fiche;
+    |Magasinier|
+    :Saisir les pièces fournies;
+    :Fournir les pièces;
+endif
+|Mécanicien|
+ 
+:Effectuer les travaux;
+:Terminer le travail;
+
+|Chef d'atelier|
+repeat
+:Essayer la voiture;
+
+  
+if (Tout est en ordre ?) 
+    #palegreen : voiture ok ; 
+    :Mettre la voiture sur le parc;
+    :Boucler la fiche de réparation;
+break
+else 
+    #pink: detection d'anomalies;
+    |Mécanicien|
+    :Effectuer les corrections;
+  |Chef d'atelier|
+
+endif 
+
+backward :Retour à l'essai -- :Essayer la voiture ;
+repeat while (retour au banc d'essai nécessaire) is (ok) 
+ 
+|Comptable|
+ 
+:Importer la fiche bouclée;
+:Traiter dans le logiciel comptable;
+stop
+ 
+@enduml
