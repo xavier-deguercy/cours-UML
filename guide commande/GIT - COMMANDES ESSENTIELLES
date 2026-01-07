@@ -1,0 +1,17 @@
+1) Cloner un projet
+   git clone URL
+
+2) Voir l’état
+   git status
+
+3) Ajouter les fichiers
+   git add .
+
+4) Sauvegarder
+   git commit -m "message"
+
+5) Envoyer
+   git push
+
+6) Changer de branche
+   git switch nom-branche
