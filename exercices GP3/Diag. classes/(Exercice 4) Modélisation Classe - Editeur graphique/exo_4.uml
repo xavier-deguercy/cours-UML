@@ -1,0 +1,86 @@
+@startuml
+title Editeur de documents graphiques — Diagramme de classes généralisé
+
+skinparam classAttributeIconSize 0
+
+
+class EditeurGraphique {
+  + ouvrir() : Document
+  + enregistrer(doc : Document) : void
+  + grouper(elements : List<ObjetGraphique>) : Groupe
+  + degrouper(g : Groupe) : void
+}
+
+class Document {
+  - titre : String
+}
+
+class Feuille {
+  - numero : int
+}
+
+Document "1" *-- "1..*" Feuille : compose
+
+Feuille "1" *-- "0..*" ObjetGraphique : objetsRacines
+
+
+abstract class ObjetGraphique {
+  + dessiner() : void
+  + deplacer(dx:int, dy:int) : void
+}
+
+class Texte {
+  - contenu : String
+}
+
+abstract class FormeGeometrique
+
+class Groupe {
+  + ajouter(o : ObjetGraphique) : void
+  + retirer(o : ObjetGraphique) : void
+  + lister() : List<ObjetGraphique>
+}
+
+ObjetGraphique <|-- Texte
+ObjetGraphique <|-- FormeGeometrique
+ObjetGraphique <|-- Groupe
+
+
+Groupe "1" o-- "2..*" ObjetGraphique : elements
+ObjetGraphique "0..1" --> "1" Groupe : parentGroupe
+
+
+
+
+class Cercle {
+  - rayon : double
+}
+class Ellipse {
+  - rayonX : double
+  - rayonY : double
+}
+class Rectangle {
+  - largeur : double
+  - hauteur : double
+}
+class Carre
+class Ligne {
+  - x2 : int
+  - y2 : int
+}
+
+FormeGeometrique <|-- Cercle
+FormeGeometrique <|-- Ellipse
+FormeGeometrique <|-- Rectangle
+Rectangle <|-- Carre
+FormeGeometrique <|-- Ligne
+
+note right of Carre
+Contrainte : largeur = hauteur
+end note
+
+
+EditeurGraphique ..> Document : édite
+EditeurGraphique ..> ObjetGraphique : manipule
+
+@enduml
