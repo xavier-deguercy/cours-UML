@@ -1,0 +1,15 @@
+@startuml
+actor Client
+
+rectangle "Serveur" {
+  Client --> (Consulter pages Web - HTTP)
+  Client --> (Envoyer / Recevoir mails - MAIL)
+  Client --> (Exécuter commandes - TELNET)
+  Client --> (Transférer fichiers - FTP)
+
+  (Consulter pages Web - HTTP) ..> (S’identifier) : <<include>>
+  (Envoyer / Recevoir mails - MAIL) ..> (S’identifier) : <<include>>
+  (Exécuter commandes - TELNET) ..> (S’identifier) : <<include>>
+  (Transférer fichiers - FTP) ..> (S’identifier) : <<include>>
+}
+@enduml

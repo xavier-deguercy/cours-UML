@@ -1,0 +1,16 @@
+@startuml
+actor Patient
+actor Médecin
+
+rectangle "Consultation médicale" {
+  Patient --> (Prendre rendez-vous)
+  Patient --> (Se présenter à la consultation)
+  Patient --> (Payer la consultation)
+
+  Médecin --> (Examiner le patient)
+  Médecin --> (Prescrire un traitement)
+
+  (Examiner le patient) ..> (Consulter le dossier médical) : <<include>>
+  (Prescrire un traitement) ..> (Établir un diagnostic) : <<include>>
+}
+@enduml
