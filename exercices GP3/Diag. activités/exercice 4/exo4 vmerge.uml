@@ -36,18 +36,19 @@ repeat
 :Essayer la voiture;
 
   
-if (Tout est en ordre ?) 
-    #palegreen : voiture ok ; 
-    :Mettre la voiture sur le parc;
-    :Boucler la fiche de réparation;
-break
-else 
-    #pink: detection d'anomalies;
-    |Mécanicien|
-    :Effectuer les corrections;
-  |Chef d'atelier|
+|Chef d'atelier|
+:Essayer la voiture;
 
-endif 
+while (Tout est en ordre ?) is (Non)
+  :Détecter des anomalies;
+
+  |Mécanicien|
+  :Effectuer les corrections;
+
+  |Chef d'atelier|
+  :Réessayer la voiture;
+endwhile (Oui)
+
 
 backward :Retour à l'essai -- :Essayer la voiture ;
 repeat while (retour au banc d'essai nécessaire) is (ok) 
