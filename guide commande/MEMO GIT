@@ -1,0 +1,29 @@
+========================================
+        GUIDE GIT - ÉTUDIANTS
+========================================
+
+[1] DÉMARRER
+    git init
+    git clone URL
+
+[2] TRAVAILLER
+    git status
+    git add .
+    git commit -m "message"
+
+[3] BRANCHES
+    git switch -c nom
+    git switch nom
+
+[4] ENVOYER / RÉCUPÉRER
+    git push origin 'nom-branche'
+    git pull origin 'nom-branche'
+
+[5] CORRIGER
+    git reset fichier
+    git reset --soft HEAD~1
+
+----------------------------------------
+WORKFLOW À RETENIR :
+MODIFIER -> ADD -> COMMIT -> PUSH
+----------------------------------------

@@ -1,0 +1,150 @@
+====================================================
+        GUIDE GIT – COMMANDES ESSENTIELLES
+                (Étudiants)
+====================================================
+
+OBJECTIF :
+- Cloner un projet
+- Modifier du code
+- Sauvegarder (commit)
+- Changer de branche
+- Envoyer le code (push)
+
+----------------------------------------------------
+1) DÉMARRER UN PROJET
+----------------------------------------------------
+
+Initialiser Git dans un dossier :
+> git init
+
+Cloner un projet existant :
+> git clone URL_DU_REPO
+
+----------------------------------------------------
+2) VÉRIFIER L’ÉTAT DU PROJET
+----------------------------------------------------
+
+Voir les fichiers modifiés :
+> git status
+
+Voir l’historique :
+> git log
+
+Historique court :
+> git log --oneline
+
+----------------------------------------------------
+3) MODIFIER LE CODE
+----------------------------------------------------
+
+- Modifier les fichiers dans l’IDE
+- Puis vérifier :
+
+> git status
+
+----------------------------------------------------
+4) AJOUTER LES FICHIERS
+----------------------------------------------------
+
+Ajouter un fichier :
+> git add fichier.txt
+
+Ajouter tous les fichiers :
+> git add .
+
+----------------------------------------------------
+5) SAUVEGARDER (COMMIT)
+----------------------------------------------------
+
+Créer un commit :
+> git commit -m "Message clair"
+
+----------------------------------------------------
+6) GÉRER LES BRANCHES
+----------------------------------------------------
+
+Voir les branches :
+> git branch
+
+Créer une branche :
+> git switch -c nom-branche
+
+Changer de branche :
+> git switch nom-branche
+
+----------------------------------------------------
+7) ENVOYER LE CODE (PUSH)
+----------------------------------------------------
+
+Premier push d’une branche :
+> git push -u origin nom-branche
+
+Push normal :
+> git push
+
+----------------------------------------------------
+8) RÉCUPÉRER LE CODE
+----------------------------------------------------
+
+Récupérer les changements :
+> git pull
+
+Récupérer sans fusionner :
+> git fetch
+
+----------------------------------------------------
+9) FUSIONNER UNE BRANCHE
+----------------------------------------------------
+
+Aller sur main :
+> git switch main
+
+Fusionner :
+> git merge nom-branche
+
+----------------------------------------------------
+10) CORRIGER DES ERREURS
+----------------------------------------------------
+
+Retirer un fichier ajouté par erreur :
+> git reset fichier.txt
+
+Annuler un fichier modifié :
+> git checkout -- fichier.txt
+
+Annuler le dernier commit (sans perdre le code) :
+> git reset --soft HEAD~1
+
+Annuler le dernier commit (ATTENTION : supprime le code) :
+> git reset --hard HEAD~1
+
+----------------------------------------------------
+11) SUPPRIMER UNE BRANCHE
+----------------------------------------------------
+
+Supprimer une branche locale :
+> git branch -d nom-branche
+
+Supprimer une branche distante :
+> git push origin --delete nom-branche
+
+----------------------------------------------------
+12) WORKFLOW SIMPLE À RETENIR
+----------------------------------------------------
+
+> git status
+> git add .
+> git commit -m "message"
+> git push
+
+----------------------------------------------------
+MÉMO RAPIDE
+----------------------------------------------------
+
+Modifier le code
+↓
+git add .
+↓
+git commit -m "message"
+↓
+git push
