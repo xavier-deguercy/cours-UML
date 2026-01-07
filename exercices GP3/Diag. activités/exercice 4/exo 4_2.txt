@@ -1,0 +1,43 @@
+@startuml
+skinparam conditionStyle diamond
+skinparam style strictuml
+
+title Créer une fiche de réparation
+
+|Chef d'atelier|
+start
+:Saisir les critères de recherche de voitures;
+
+|Système|
+:Afficher la liste des voitures correspondantes;
+
+|Chef d'atelier|
+if (La voiture existe ?) then (Oui)
+    :Sélectionner la voiture;
+    |Système|
+    :Fournir les informations sur le véhicule;
+else (Non)
+    |Chef d'atelier|
+    :Saisir les informations du nouveau véhicule;
+endif
+
+|Chef d'atelier|
+if (Voiture sous garantie ?) then (Oui)
+    :Saisir la date de demande de réparation;
+else (Non)
+endif
+
+:Saisir la date de réception et de restitution;
+
+if (Dommage payé par l'assurance ?) then (Oui)
+    |Système|
+    :Fournir la liste des assurances;
+    |Chef d'atelier|
+    :Sélectionner l'assurance adéquate;
+else (Non)
+endif
+
+|Système|
+:Enregistrer la fiche de réparation;
+stop
+@enduml
