@@ -15,11 +15,13 @@
     git switch -c nom
     git switch nom
 
-[4] ENVOYER / RÉCUPÉRER
+[4] ENVOYER 
     git push origin 'nom-branche'
+
+[5] RECUPERER 
     git pull origin 'nom-branche'
 
-[5] CORRIGER
+[6] CORRIGER
     git reset fichier
     git reset --soft HEAD~1
 
