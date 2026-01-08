@@ -18,9 +18,9 @@ end
 
 == heure clignote puis minutes clignotent ==
 SW -> LCD : blinkHours(B1 : push (1))
-LCD -> LCD : blinkIdx = HEURES
+LCD -> LCD : blinkIdx ( HEURES )
 SW -> LCD : blinkMinutes(B1 : push (2))
-LCD -> LCD : blinkIdx = MINUTES
+LCD -> LCD : blinkIdx ( MINUTES )
 
 
 == Incrément des minutes via Button2 (répété) ==
@@ -45,8 +45,9 @@ end
 SW -> TM : commitNewTime()
 SW <-- TM : NewTime
 SW -> LCD : stopBlinking()
+LCD ->x LCD : blinkIdx (Stop)
 SW <-- LCD : blinkIdx = 0
-SW -> LCD : refresh()
-SW <-- LCD : refresh(ok)
+''SW -> LCD : refresh()
+''SW <-- LCD : refresh(ok)
 
 @enduml
