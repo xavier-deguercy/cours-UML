@@ -1,5 +1,42 @@
-A partir du diagramme de classe ci-dessus
+@startuml
+''A partir du diagramme de classe ci-dessus
 
-Rédigez un diagramme de séquence pour modéliser le scénario où un utilisateur voudrait imprimer un fichier.
+''Rédigez un diagramme de séquence pour modéliser le scénario où un utilisateur 
+''voudrait imprimer un fichier.
 
-Rédigez un diagramme de collaboration à partir du diagramme de séquence obtenu à la question 1.
+''Rédigez un diagramme de collaboration à partir du diagramme de séquence 
+''obtenu à la question 1.
+
+
+actor Utilisateur as US
+participant ":Ordinateur" as PC
+participant ":Fichier" as FI
+participant ":ServeurImprimante" as SI
+participant ":QueueImpression" as QI
+participant ":Imprimante" as PI
+
+US -> PC : ouvrir(fichier)
+PC -> FI : ouvrir()
+US -> PC : print(fichier)
+
+''PC -> FI : 
+PC -> SI : connect()
+PC <-- SI : EtatdeConnection(ok) 
+PC -> SI : Print(fichier)
+SI -> QI : Store(fichier)
+QI --> SI : Store(ok)
+SI -> PI : DemandeEtat()
+PI -> PI :VerificationEtat(ok)
+SI <-- PI : MaJEtat(ok)
+SI -> QI : DemandeUnstore(fichier)
+SI <- QI : Unstore(fichier)
+SI -> PI : DemandePrint(fichier)
+PI -> PI : Print(fichier)
+''PI -> PI : delet(fichier)
+SI <-- PI : MaJEtat(impression)
+SI --> PC : MaJEtat(impression)
+''QI --> QI : MajEtat
+''QI --> SI : MajEtat
+SI --> PC : Disconnect()
+PC --> US : EtatImpression
+@enduml
