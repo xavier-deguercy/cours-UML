@@ -1,29 +1,34 @@
 @startuml
 actor Guichetier
-participant "Système guichet" as SG
-participant "Système central" as SC
+participant ": Système guichet" as SG
+participant ": Système central" as SC
 
 ''Le guichetier ouvre une session
-Guichetier -> SG : ouverture session
-Guichetier <-- SG : sessionOuverte()
+Guichetier -> SG : 1.ouverture session()
+Guichetier <-- SG : 2.sessionOuverte()
 ''Le système guichet valide le compte auprès du système central.
-Guichetier -> SG : saisirNumeroCompte(numeroCompte)
+Guichetier -> SG : 3.saisirNumeroCompte(numeroCompte)
 
-SG -> SC : validerCompte(numeroCompte)
-SC --> SG : compteValide(ok)
+SG -> SC : 4.validerCompte(numeroCompte)
+SC --> SG : 5.compteValide(ok)
 ''Le système guichet demande le type d’opération au guichetier
-SG --> Guichetier : demanderTypeOperation()
+SG -> Guichetier : 6.demanderTypeOperation()
 ''Le guichetier sélectionne le montant du retrait
-Guichetier -> SG : choisirOperation("ex RETRAIT")
+Guichetier -> SG : 7.choisirOperation("ex RETRAIT")
 
 ''Le système guichet interroge le système central pour s’assurer que le compte est suffisamment approvisionné
-SG -> SC : VerificationSolde ET  VerificationAutorisation
-SC --> SG : SoldeValide(ok) ET AutorisationValide(ok)
-''Le système guichet demande au système central de débiter le compte
-SG -> SC : Demande Debit
-''Le système notifie au guichetier qu’il peut délivrer le montant demandé
-SC --> SG : ok
-SG -> Guichetier : Delirer 
+SG -> SC : 8.VerificationSolde() 
+SC --> SG : 9.SoldeValide(ok)
 
+''Le système guichet demande au système central de débiter le compte
+SG -> SC : 10.DemandeDebit()
+
+''Le système notifie au guichetier qu’il peut délivrer le montant demandé
+SC --> SG : 11.AutorisationDebit()
+SG -> Guichetier : 12.Delivrer()
+
+
+
+Guichetier -> SG : 14: FermetureSession()
 
 @enduml
