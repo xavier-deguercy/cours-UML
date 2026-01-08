@@ -22,14 +22,11 @@ class Employé {
     - dateEmbauche : Date
 }
 
-class Inscription {
-    - rangPreference : int
-}
 
 ' Relations avec phrases de lecture
 Catalogue "1" *-- "1..*" Formation : "regroupe"
 Formation "1" *-- "1..*" Session : "propose"
 Employé "1..*" -- "0..3" Formation : "s'inscrit à"
-(Employé, Formation) .. Inscription
+
 
 @enduml
