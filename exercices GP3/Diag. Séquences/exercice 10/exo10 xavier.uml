@@ -1,0 +1,52 @@
+@startuml
+title Réglage des minutes — SimpleWatch (diagramme de séquence)
+
+actor Utilisateur as US
+participant ":Button1" as B1
+participant ":Button2" as B2
+participant ":SimpleWatch" as SW
+participant ":LCDDisplay" as LCD
+participant ":Time" as TM
+
+autonumber
+
+== Accès au mode réglage minutes : 2 appuis sur Button1 ==
+loop 2x (appui sur Button1)
+  US -> B1 : push()
+  B1 -> SW : push()
+end
+
+== heure clignote puis minutes clignotent ==
+SW -> LCD : blinkHours(B1 : push (1))
+LCD -> LCD : blinkIdx = HEURES
+SW -> LCD : blinkMinutes(B1 : push (2))
+LCD -> LCD : blinkIdx = MINUTES
+
+
+== Incrément des minutes via Button2 (répété) ==
+loop n fois (appui sur Button2)
+  US -> B2 : push()
+  B2 -> SW : push()
+  SW -> TM : incrementMinutes()
+  SW -> LCD : refresh()
+end
+
+
+== Validation : appui simultané sur les deux boutons ==
+group B1 B2
+US -> B1 : push()
+US -> B2 : push()
+end
+group
+B1 -> SW : push()
+B2 -> SW : push()
+end
+
+SW -> TM : commitNewTime()
+SW <-- TM : NewTime
+SW -> LCD : stopBlinking()
+SW <-- LCD : blinkIdx = 0
+SW -> LCD : refresh()
+SW <-- LCD : refresh(ok)
+
+@enduml
