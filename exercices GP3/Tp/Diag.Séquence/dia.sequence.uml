@@ -1,0 +1,19 @@
+@startuml
+actor Organisateur
+participant Systeme
+participant Catalogue
+participant Formation
+participant Session
+
+Organisateur -> Systeme : sélectionnerCatalogue()
+Systeme -> Catalogue : chargerCatalogue()
+
+Organisateur -> Systeme : saisirInfosFormation()
+Systeme -> Formation : creerFormation()
+
+Organisateur -> Systeme : saisirInfosSessions()
+Systeme -> Session : creerSessions()
+
+Systeme -> Catalogue : enregistrerFormation()
+Systeme --> Organisateur : confirmation
+@enduml
