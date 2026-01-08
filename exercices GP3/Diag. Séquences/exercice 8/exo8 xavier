@@ -1,0 +1,29 @@
+@startuml
+actor Guichetier
+participant "Système guichet" as SG
+participant "Système central" as SC
+
+''Le guichetier ouvre une session
+Guichetier -> SG : ouverture session
+Guichetier <-- SG : sessionOuverte()
+''Le système guichet valide le compte auprès du système central.
+Guichetier -> SG : saisirNumeroCompte(numeroCompte)
+
+SG -> SC : validerCompte(numeroCompte)
+SC --> SG : compteValide(ok)
+''Le système guichet demande le type d’opération au guichetier
+SG --> Guichetier : demanderTypeOperation()
+''Le guichetier sélectionne le montant du retrait
+Guichetier -> SG : choisirOperation("ex RETRAIT")
+
+''Le système guichet interroge le système central pour s’assurer que le compte est suffisamment approvisionné
+SG -> SC : VerificationSolde ET  VerificationAutorisation
+SC --> SG : SoldeValide(ok) ET AutorisationValide(ok)
+''Le système guichet demande au système central de débiter le compte
+SG -> SC : Demande Debit
+''Le système notifie au guichetier qu’il peut délivrer le montant demandé
+SC --> SG : ok
+SG -> Guichetier : Delirer 
+
+
+@enduml
