@@ -1,37 +1,17 @@
-
 @startuml
-
- == Identifier les acteurs qui utilisent le système d’informations == 
- 
- 
- Actor Employés
- actor
- participant ": formation" 
- sessions de formations,
- application
- catalogue
-
-
-
-
- == Identifier les cas d’utilisation de chaque acteur == 
-
-
-
-@enduml
-
-class catalogue
- année civile (y/m/d)
- Formation []
-
- @startuml
 left to right direction
 skinparam style strictuml
 title Gestion des inscriptions aux formations — Cas d'utilisation
 
+ ''== Identifier les acteurs qui utilisent le système d’informations == 
+ 
+usecase "Initialiser "
 actor "Organisateur de formations" as Org
 actor "Employé" as Emp
 
+
+ ''== Identifier les cas d’utilisation de chaque acteur == 
+ 
 rectangle "SI Gestion des formations" {
 
   usecase "Initialiser / créer\nle catalogue annuel" as UC_InitCat
@@ -71,5 +51,19 @@ Règle : pas d'égalité d'ancienneté.
 Si une session est pleine, on essaie
 le vœu suivant (2e, 3e, ...).
 end note
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @enduml

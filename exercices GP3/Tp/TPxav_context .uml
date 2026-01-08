@@ -1,0 +1,18 @@
+Contexte de travail :
+• Afin de gérer les inscriptions d’employés à des formations, et de les affecter à des sessions de formations, une
+application réalisée avec un langage de programmation objet est développée.
+• L’organisation propose un catalogue de formations, ce catalogue regroupe, pour une année civile, l’ensemble des
+formations référencées.
+• Chaque formation, étalée sur un ou plusieurs jours contigus, propose différentes sessions identiques ; seul le
+numéro de session, la date de début de session et le nombre de participants maximum diffèrent.
+• Un organisateur de formations assure la gestion globale des catalogues de formations et des affectations des
+employés aux sessions.
+• Lors de l’inscription à une formation, chaque employé classe toutes les sessions relatives à la formation par ordre
+de préférence.
+• A la clôture des inscriptions de chaque formation, chacun des employés se voit alloué une session en fonction de
+son ancienneté et de son classement (par ordre de préférence).
+• Le nombre de places par session étant limité, l’ancienneté est un critère prioritaire. Si un vœu pour une session ne
+peut être satisfait pour un participant, on étend son choix à son deuxième vœu de session, et ainsi de suite.
+• Règles de gestion complémentaires :
+1. On considère pour la suite de l’étude que deux employés n’ont jamais la même ancienneté.
+2. On considère qu’un employé peut demander au plus 3 formations pour une année.
