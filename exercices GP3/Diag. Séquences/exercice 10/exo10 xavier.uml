@@ -20,6 +20,7 @@ end
 SW -> LCD : blinkHours(B1 : push (1))
 LCD -> LCD : blinkIdx ( HEURES )
 SW -> LCD : blinkMinutes(B1 : push (2))
+LCD -> LCD : StopblinkIdx ( HEURES )
 LCD -> LCD : blinkIdx ( MINUTES )
 
 
@@ -49,5 +50,6 @@ LCD ->x LCD : blinkIdx (Stop)
 SW <-- LCD : blinkIdx = 0
 ''SW -> LCD : refresh()
 ''SW <-- LCD : refresh(ok)
+LCD --> US : Stopblinking
 
 @enduml

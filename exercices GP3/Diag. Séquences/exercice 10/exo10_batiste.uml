@@ -1,11 +1,11 @@
 @startuml
 actor Utilisateur
-participant "Bouton 1" as B1
-participant "Bouton 2" as B2
-participant "Montre (SimpleWatch)" as SW
-participant "Heure (Time)" as T
-participant "Affichage LCD" as LCD
-
+participant ":Bouton 1" as B1
+participant ":Bouton 2" as B2
+participant ":Montre (SimpleWatch)" as SW
+participant ":Heure (Time)" as T
+participant ":Affichage LCD" as LCD
+== x ==
 Utilisateur -> B1 : appuyer()
 B1 -> SW : appuyer()
 
@@ -14,14 +14,14 @@ B1 -> SW : appuyer()
 
 SW -> LCD : faireClignoterHeures()
 SW -> LCD : faireClignoterMinutes()
-
+== x ==
 loop À chaque appui sur le bouton 2
     Utilisateur -> B2 : appuyer()
     B2 -> SW : appuyer()
     SW -> T : incrementerMinutes()
     SW -> LCD : rafraichirAffichage()
 end
-
+== x ==
 Utilisateur -> B1 : appuyer()
 Utilisateur -> B2 : appuyer()
 
