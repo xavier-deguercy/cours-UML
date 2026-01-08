@@ -1,0 +1,48 @@
+@startuml
+skinparam style strictuml
+
+actor Utilisateur
+participant ": Bouton 1 : Button" as B1
+participant ": SimpleWatch" as SW
+participant ": LCDDisplay" as LCD
+participant ": Bouton 2 : Button" as B2
+participant ": Time" as T
+
+== Accès au réglage des minutes ==
+
+Utilisateur -> B1 : push()
+B1 -> SW : notify()
+SW -> LCD : blinkHours()
+
+
+Utilisateur -> B1 : push()
+B1 -> SW : notify()
+SW -> LCD : blinkMinutes()
+
+
+== Incrémentation des minutes ==
+
+loop Tant que l'utilisateur appuie sur le bouton 2
+    Utilisateur -> B2 : push()
+    B2 -> SW : notify()
+    SW -> T : incrementMinutes()
+    SW -> LCD : refresh()
+
+end
+
+== Validation et Enregistrement ==
+
+group Appui simultané (B1 + B2)
+    group (2 buttons)
+    Utilisateur -> B1 : push()
+    Utilisateur -> B2 : push()
+    B1 -> SW : notify()
+    B2 -> SW : notify()
+end
+    SW -> T : commitNewTime()
+    T --> SW : NewTime
+    SW -> LCD : stopBlinking()
+
+end
+
+@enduml
