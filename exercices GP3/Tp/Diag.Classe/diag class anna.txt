@@ -1,32 +1,53 @@
 @startuml
 skinparam style strictuml
 skinparam classAttributeIconSize 0
-
-class Catalogue {
-    - annee : int
+skinparam shadowing false
+skinparam class {
+    BackgroundColor White
+    BorderColor #263238
+    ArrowColor #263238
 }
 
-class Formation {
-    - libelle : String
-    - duree : int
+package "Structure Catalogue"  {
+    class Catalogue {
+        - annee : int
+    }
+    class Formation {
+        - libelle : String
+        - duree : int
+    }
+    class Session {
+        - numero : int
+        - dateDebut : Date
+        - nbPlacesMax : int
+    }
 }
 
-class Session {
-    - numero : int
-    - dateDebut : Date
-    - nbPlacesMax : int
+package "Acteurs & Inscriptions"  {
+    class Employé {
+        - nom : String
+        - dateEmbauche : Date
+        + getAnciennete() : int
+    }
+    class Inscription <<Association>> {
+        - rangPreference : int
+    }
 }
 
-class Employé {
-    - nom : String
-    - dateEmbauche : Date
-}
-
-
-' Relations avec phrases de lecture
+' --- RELATIONS STRUCTURELLES ---
 Catalogue "1" *-- "1..*" Formation : "regroupe"
 Formation "1" *-- "1..*" Session : "propose"
-Employé "1..*" -- "0..3" Formation : "s'inscrit à"
 
+' --- RELATIONS DE CHOIX (VŒUX) ---
+Employé "1..*" -- "0..3" Formation : "s'inscrit à"
+(Employé, Formation) .. Inscription
+
+' --- RELATIONS DE RÉSULTAT (AFFECTATION) ---
+Session "0..1" -- "0..*" Employé : "est allouée à"
+note bottom of Session
+  Allocation effectuée selon :
+  1. Ancienneté de l'employé
+  2. Rang de préférence choisi
+end note
 
 @enduml
