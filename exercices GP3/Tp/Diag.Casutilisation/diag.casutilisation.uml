@@ -1,0 +1,15 @@
+@startuml
+actor "Organisateur de formations" as Organisateur
+actor "Employé" as Employe
+
+Organisateur --> (Créer catalogue)
+Organisateur --> (Créer formation)
+Organisateur --> (Créer sessions)
+Organisateur --> (Clôturer inscriptions)
+Organisateur --> (Affecter employés aux sessions)
+
+Employe --> (Consulter catalogue)
+Employe --> (S’inscrire à une formation)
+Employe --> (Classer les sessions)
+
+@enduml
