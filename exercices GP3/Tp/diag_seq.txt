@@ -1,0 +1,43 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Employé" as emp
+actor "Organisateur" as org
+
+rectangle "Système de Gestion des Formations" {
+    
+    (Consulter le catalogue) as UC1
+    (S'inscrire à une formation) as UC2
+    (Classer les sessions par préférence) as UC3
+    
+    (Gérer les catalogues) as UC4
+    (Gérer les sessions) as UC5
+    (Clôturer les inscriptions) as UC6
+    (Affecter les employés aux sessions) as UC7
+    
+    ' Relations pour l'Employé
+    emp -- UC1
+    emp -- UC2
+    UC2 ..> UC3 : <<include>>
+    
+    ' Relations pour l'Organisateur
+    org -- UC4
+    org -- UC5
+    org -- UC6
+    
+    ' Inclusion de l'algorithme d'affectation lors de la clôture
+    UC6 ..> UC7 : <<include>>
+    
+    note right of UC2
+      Limite de 3 formations 
+      par an par employé
+    end note
+    
+    note right of UC7
+      Priorité selon l'ancienneté 
+      et l'ordre de préférence
+    end note
+}
+
+@enduml
