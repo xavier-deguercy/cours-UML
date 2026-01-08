@@ -1,0 +1,35 @@
+@startuml
+skinparam style strictuml
+skinparam sequenceMessageAlign center
+
+actor "L'Organisateur" as ORG
+participant ": Application" as APP
+participant ": leCatalogue " as CAT
+participant ": nouvelleFormation " as FRM
+
+title Création d'une formation et de ses sessions
+
+ORG -> APP : selectionnerCatalogue(annee)
+APP -> CAT : getCatalogue(annee)
+CAT --> APP : catalogueSelectionné
+
+
+ORG -> APP : saisirInfosFormation(libelle, duree, sessionsInfos)
+APP -> CAT : ajouterFormation(libelle, duree)
+
+
+
+CAT -> FRM : <<create>>(libelle, duree)
+
+
+CAT -> FRM : creerSession(dateDebut, nbMax)
+create participant ": Session" as SES
+FRM -> SES : <<create>>(numero, dateDebut, nbMax)
+FRM --> CAT : sessionAjoutée
+
+
+
+CAT --> APP : confirmationEnregistrement
+APP --> ORG : afficherSuccès()
+
+@enduml
