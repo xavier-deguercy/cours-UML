@@ -1,9 +1,26 @@
 @startuml
+skinparam style strictuml
+
+== S'inscrire à une formation ==
+''definition des acteurs
+actor "Organisateur de formations" as Org
+
+''definission des 
+boundary "IHM" as UI
+control "CatalogueService" as SVC
+database "Base de données" as DB
+entity "Catalogue" as CAT
+entity "Formation" as FOR
+entity "Session" as SES
+
+autonumber
+@
 
 
 
+''title UC — Créer le catalogue (si besoin), une formation et ses sessions""
 
 
 
-
+autonumber
 @enduml

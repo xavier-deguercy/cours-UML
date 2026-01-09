@@ -5,7 +5,6 @@ title Gestion des inscriptions aux formations — Cas d'utilisation
 
  ''== Identifier les acteurs qui utilisent le système d’informations == 
  
-usecase "Initialiser "
 actor "Organisateur de formations" as Org
 actor "Employé" as Emp
 
@@ -13,39 +12,28 @@ actor "Employé" as Emp
  ''== Identifier les cas d’utilisation de chaque acteur == 
  
 rectangle "SI Gestion des formations" {
-
+''orga
   usecase "Initialiser / créer\nle catalogue annuel" as UC_InitCat
   usecase "Gérer le catalogue\n(ajouter/mettre à jour formations)" as UC_GererCat
   usecase "Créer une formation\net ses sessions" as UC_CreerForm
   usecase "Clôturer les inscriptions\n(d'une formation)" as UC_Cloturer
   usecase "Allouer les sessions\nselon ancienneté\net préférences" as UC_Allouer
   usecase "Consulter les affectations" as UC_ConsulterAffect
-
+''employés
   usecase "S'inscrire à une formation" as UC_Inscrire
   usecase "Classer les sessions\n(par ordre de préférence)" as UC_Classer
   usecase "Consulter ses inscriptions\net affectations" as UC_ConsulterEmp
 }
-
+''=== US lié directement da l'organisateur ===
 Org --> UC_InitCat
 Org --> UC_GererCat
 Org --> UC_CreerForm
 Org --> UC_Cloturer
 Org --> UC_Allouer
 Org --> UC_ConsulterAffect
-
-Emp --> UC_Inscrire
-Emp --> UC_Classer
-Emp --> UC_ConsulterEmp
-
-UC_GererCat ..> UC_CreerForm : <<include>>
+'' les include
 UC_Inscrire ..> UC_Classer : <<include>>
-UC_Cloturer ..> UC_Allouer : <<include>>
-
-note right of UC_Inscrire
-Règle : un employé demande au plus
-3 formations pour une année.
-end note
-
+''notes
 note right of UC_Allouer
 Règle : pas d'égalité d'ancienneté.
 Si une session est pleine, on essaie
@@ -53,15 +41,20 @@ le vœu suivant (2e, 3e, ...).
 end note
 
 
+'' === US lié directementà l'employé ===
+Emp --> UC_Inscrire
+Emp --> UC_Classer
+Emp --> UC_ConsulterEmp
+'' les include
+UC_GererCat ..> UC_CreerForm : <<include>>
+UC_Cloturer ..> UC_Allouer : <<include>>
 
 
-
-
-
-
-
-
-
+''notes
+note right of UC_Inscrire
+Règle : un employé demande au plus
+3 formations pour une année.
+end note
 
 
 

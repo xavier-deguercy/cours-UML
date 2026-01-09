@@ -1,4 +1,4 @@
-Contexte de travail :
+"Contexte de travail :
 • Afin de gérer les inscriptions d’employés à des formations, et de les affecter à des sessions de formations, une
 application réalisée avec un langage de programmation objet est développée.
 • L’organisation propose un catalogue de formations, ce catalogue regroupe, pour une année civile, l’ensemble des
@@ -16,3 +16,29 @@ peut être satisfait pour un participant, on étend son choix à son deuxième v
 • Règles de gestion complémentaires :
 1. On considère pour la suite de l’étude que deux employés n’ont jamais la même ancienneté.
 2. On considère qu’un employé peut demander au plus 3 formations pour une année.
+
+
+ == Le diagramme de cas d’utilisation == 
+Formaliser le diagramme des cas d’utilisation :
+◼ Identifier les acteurs qui utilisent le système d’informations
+◼ Identifier les cas d’utilisation de chaque acteur
+
+
+Le diagramme de séquences
+Pour le cas d’utilisation ‘créer le catalogue, une formation et ses session 
+Cas d’utilisation : création d’une formation et ses sessions liées 
+Acteur principal : l’organisateur des formations 
+Evénement déclencheur : une nouvelle formation 
+Préconditions : Le catalogue est initialisé ou il faut l’initialiser (préparation d’une année de formation).Les informations sur la formation et les sessions sont disponibles 
+Scénario normal 
+1. L’organisateur sélectionne un catalogue 
+2. L’organisateur fournit les informations sur la formation et les sessions 
+3. Le système enregistre ces informations
+
+
+
+Le diagramme de classes 
+Avec les classes que vous avez découvert lors de la spécification par les cas d’utilisation et les séquences à savoir : 
+1. Catalogue , Formation, Session, Employé 
+2. Etablir le diagramme de classes en faisant figurer les attributs, les associations entre classes, les valeurs de multiplicité et les sens de navigabilité entre classes
+3. Réfléchir sur les agrégations, les compositions, les héritages"
